@@ -1,43 +1,16 @@
 <%-- <%@page import="spro.com.org.SPRO_DBManager"%> --%>
+<%@page import="teamproject.Sales_DBManager"%>
+<%@page import="teamproject.Sales"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.PreparedStatement"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%
-
-// 	SPRO_DBManager sdbm = new SPRO_DBManager();
-
-	String sucValue="";
-// 	out.println(123);
-// 	out.println("<p>문단문단</p>");
-// 	for(int i = 0; i<10; i++)
-// 	{
-//  		out.println("i=" + i);
-// 	}
-
-	//dbmanager에서 한글안될때
-// 	request.setCharacterEncoding("utf-8");
-	
-	
-	String p_id =(String)request.getParameter("id");	
-	String p_pw =(String)request.getParameter("pw");	
-	String p_name =(String)request.getParameter("name");	
-	String p_phone =(String)request.getParameter("phone");
-	
-// 	int ret = sdbm.signInsert(p_id,p_pw,p_name,p_phone);
-// 	out.println("ret= "+ret);
-// 	sucValue="<a class = 'btn btn-primary' href='index.jsp'>로그인페이지이동</a>";
-// 	out.println("<br>");
-// 	out.println("p_id = "+p_id);
-	
-// 	out.println("<br>");
-// 	out.println("p_pw = "+p_pw);
-// 	out.println("<br>");
-// 	out.println("p_name = "+p_name);
-// 	out.println("<br>");
-// 	out.println("p_phone = "+p_phone);
-	
+	Sales_DBManager ssdm = new Sales_DBManager();
+	ArrayList<Sales> list = ssdm.select();
 %>
 <!DOCTYPE html>
 <html>
@@ -55,9 +28,87 @@
 </head>
 <body>
 	<div class="jumbotron">
-		<h1>My Study</h1>
-		<p>JSP와 Tomcat을 활용하여 제작</p>
-		<%out.print(sucValue); %>
+		<h1>매출관리입니다</h1>
+		<p>일일 판매실적/주간 판매실적/월 판매실적/물품별 판매실적(주간/일간/요일 비교)</p>
+	</div>
+	<div>
+		<button type="button" onclick="location.href='#' ">일일</button>
+		<button type="button" onclick="location.href='#' ">주간</button>
+		<button type="button" onclick="location.href='#' ">월별</button>
+		<button type="button" onclick="location.href='#' ">물품별</button>
+		<button type="button" onclick="location.href='../index.jsp' ">돌아가기</button>
+	</div>
+	<div class="container mybgwh">
+		<table class="table table-dark table-hover">
+			<thead>
+				<tr>
+					<td>매출번호</td>
+					<td>주문번호</td>
+					<td>제품</td>
+					<td>수량</td>
+					<td>회원</td>
+				</tr>
+			</thead>
+			<tbody>
+				<%
+					for (int i = 0; i < list.size(); i++) {
+						Sales ssu = list.get(i);
+				%>
+				<tr>
+					<td>
+						<%
+							out.print(ssu.getIdx());
+						%>
+					</td>
+					<td>
+						<%
+							out.print(ssu.getSalesNumber());
+						%>
+					</td>
+					<td>
+						<%
+							out.print(ssu.getProduct());
+						%>
+					</td>
+					<td>
+						<%
+							out.print(ssu.getAmount());
+						%>
+					</td> 
+					<td>
+						<%
+						if(ssu.getClient()!=null)
+						{
+							out.print(ssu.getClient());
+						}
+						else
+							out.print("");
+						%>
+					</td>
+				</tr>
+				<%
+					}
+				%>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
