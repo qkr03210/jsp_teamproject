@@ -1,4 +1,4 @@
-<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Connection" %>
 <%@page import="teamproject.Member"%>
 <%@page import="teamproject.DBManager"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -23,6 +23,12 @@
 	System.out.println(mem.getName());
 	System.out.println(mem.getPhone());
 	
-	%>
+	%><form>
+		<input type="button" value="惑前">
+		<input type="button" value="概免包府">
+		<input type="button" value="抗距包府">
+		<input type="button" value="流盔包府">
+		<input type="button" value="雀盔包府">
+	</form>
 </body>
 </html>
