@@ -17,18 +17,24 @@
 	{
 	%>
 	楷搬凳
+	<form>
+		<button type="button" onclick="location.href='#' ">惑前包府</button>
+		<button type="button" onclick="location.href='#' ">概免包府</button>
+		<button type="button" onclick="location.href='#' ">抗距包府</button>
+		<button type="button" onclick="location.href='#' ">流盔包府</button>
+		<button type="button" onclick="location.href='#' ">雀盔包府</button>
+	</form>
 	<%
-	}
 	Member mem = dbma.cklogin("aa","aa");
 	System.out.println(mem.getName());
 	System.out.println(mem.getPhone());
-	
-	%><form>
-		<input type="button" value="惑前">
-		<input type="button" value="概免包府">
-		<input type="button" value="抗距包府">
-		<input type="button" value="流盔包府">
-		<input type="button" value="雀盔包府">
-	</form>
+	}
+	else{
+	%>
+	楷搬 救凳
+	<%
+	}
+	%>
+
 </body>
 </html>

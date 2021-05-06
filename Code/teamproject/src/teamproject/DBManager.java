@@ -81,7 +81,8 @@ public class DBManager {
 		}
 		return member;
 	}
-
+	
+	//¹Ø¿¡²¨ ¾ÆÁ÷ ¾ÈÇØºÃÀ½
 	public int signInsert(String id, String pw, String name, String phone) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -116,7 +117,8 @@ public class DBManager {
 		}
 		return 0;
 	}
-
+	
+	//¹Ø¿¡²¨ ¾ÆÁ÷ ¾ÈÇØºÃÀ½
 	public int seat_useInset(String num, String name, String phone, String m_time) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
