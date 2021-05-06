@@ -25,10 +25,39 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+	
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById('sn_search').onclick = function() {
+			var sales_number = document.getElementById('sales_number');
+			// 			alert('id='+id.value);
+			// 			alert('pw='+pw.value);
+			location.href = '../Controller/SalesFunc1.jsp?sales_number=' + sales_number.value;
+		}
+	}
+</script>
+
+<script type="text/javascript">
+	$('document').ready(function(){
+		$('#seatsel').on('click',function(){
+			location.href='seatsel.jsp';
+		})
+		$('#logout').on('click',function(){
+			location.href='logout.jsp';
+		})
+	})
+</script>
+
+
 </head>
 <body>
-	<div class="jumbotron">
-		<h1>매출관리입니다</h1>
+	<div class="jumbotron">	
+		<div class="form-group">
+			<label for="sales_number">주문번호:</label><input type="text" class="form-control"
+				id="sales_number">
+				<input type="button" value="검색" id="sn_search" class="btn btn-primary mr-2" /> 
+		</div>
 		<p>일일 판매실적/주간 판매실적/월 판매실적/물품별 판매실적(주간/일간/요일 비교)</p>
 	</div>
 	<div>
