@@ -18,7 +18,7 @@
 	%>
 	楷搬凳
 	<form>
-		<button type="button" onclick="location.href='#' ">惑前包府</button>
+		<button type="button" onclick="location.href='View/Product.jsp' ">惑前包府</button>
 		<button type="button" onclick="location.href='View/Sales.jsp' ">概免包府</button>
 		<button type="button" onclick="location.href='#' ">抗距包府</button>
 		<button type="button" onclick="location.href='#' ">流盔包府</button>
