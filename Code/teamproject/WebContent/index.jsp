@@ -16,7 +16,6 @@
 	if(conn!=null)
 	{
 	%>
-	연결됨
 	<form>
 		<button type="button" onclick="location.href='View/Product.jsp' ">상품관리</button>
 		<button type="button" onclick="location.href='View/Sales.jsp' ">매출관리</button>
