@@ -1,58 +1,54 @@
 package teamproject;
 
 public class Product {
+	
 	@Override
 	public String toString() {
-		return "Product [code=" + code + ", name=" + name + ", price=" + price + ", date=" + date + ", type=" + type
-				+ ", amount=" + amount + ", classific=" + classific + "]";
+		return "Product [pd_code=" + pd_code + ", pd_name=" + pd_name + ", pd_price=" + pd_price + ", pd_type="
+				+ pd_type + ", pd_classific=" + pd_classific + ", pd_exdate=" + pd_exdate + "]";
 	}
-	public int getCode() {
-		return code;
+	
+	public int getPd_code() {
+		return pd_code;
 	}
-	public void setCode(int code) {
-		this.code = code;
+	public void setPd_code(int pd_code) {
+		this.pd_code = pd_code;
 	}
-	public String getName() {
-		return name;
+	public String getPd_name() {
+		return pd_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setPd_name(String pd_name) {
+		this.pd_name = pd_name;
 	}
-	public String getPrice() {
-		return price;
+	public String getPd_price() {
+		return pd_price;
 	}
-	public void setPrice(String price) {
-		this.price = price;
+	public void setPd_price(String pd_price) {
+		this.pd_price = pd_price;
 	}
-	public String getDate() {
-		return date;
+	public String getPd_type() {
+		return pd_type;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setPd_type(String pd_type) {
+		this.pd_type = pd_type;
 	}
-	public String getType() {
-		return type;
+	public String getPd_classific() {
+		return pd_classific;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setPd_classific(String pd_classific) {
+		this.pd_classific = pd_classific;
 	}
-	public int getAmount() {
-		return amount;
+	public int getPd_exdate() {
+		return pd_exdate;
 	}
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setPd_exdate(int pd_exdate) {
+		this.pd_exdate = pd_exdate;
 	}
-	public String getClassific() {
-		return classific;
-	}
-	public void setClassific(String classific) {
-		this.classific = classific;
-	}
-	private int code;
-	private String name;
-	private String price;
-	private String date;
-	private String type;
-	private int amount;
-	private String classific;
+	
+	private int pd_code;
+	private String pd_name;
+	private String pd_price;
+	private String pd_type;
+	private String pd_classific;
+	private int pd_exdate;
 }

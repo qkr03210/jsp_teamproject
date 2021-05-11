@@ -23,13 +23,12 @@ public class Product_DBManager {
 			
 			while(rs.next()) {
 				Product ppu = new Product();
-				ppu.setCode(rs.getInt("code"));
-				ppu.setName(rs.getString("name"));
-				ppu.setPrice(rs.getString("price"));
-				ppu.setDate(rs.getString("date"));
-				ppu.setType(rs.getString("type"));
-				ppu.setAmount(rs.getInt("amount"));
-				ppu.setClassific(rs.getString("classific"));
+				ppu.setPd_code(rs.getInt("pd_code"));
+				ppu.setPd_name(rs.getString("name"));
+				ppu.setPd_price(rs.getString("price"));
+				ppu.setPd_type(rs.getString("type"));
+				ppu.setPd_classific(rs.getString("classific"));
+				ppu.setPd_exdate(rs.getInt("exdate"));
 				list.add(ppu);
 			}
 			
