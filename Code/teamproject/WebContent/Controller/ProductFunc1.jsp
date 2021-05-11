@@ -11,7 +11,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<%
+<%-- 	<%
 	String pd_name = request.getParameter("name");
 	int result=0;
  	Product_DBManager pddm = new Product_DBManager();
@@ -20,7 +20,8 @@
 	if(list!=null){
 		
 		out.println("<a href = '../index.jsp' class ='btn btn-primary'>메인페이지</a>");
-	%>
+		
+	%> --%>
 
 
 </body>

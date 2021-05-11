@@ -1,5 +1,5 @@
 <%@page import="teamproject.Member_DBManager"%>
-<%@ page language="java" contentType="text/html; charset=UFT-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
     Member_DBManager mdb = new Member_DBManager();
