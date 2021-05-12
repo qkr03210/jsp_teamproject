@@ -94,21 +94,21 @@ $(document).ready(function(){
 		</div>
 	</div>
 	<div class="btn-inline">
-			<button type="button" id='all' class="btn btn-primary onclick="
+			<button type="button" id='all' class="btn btn-primary" onclick="
 				location.href='#'">전체</button>
-			<button type="button" id='sim' class="btn btn-primary onclick="
+			<button type="button" id='sim' class="btn btn-primary" onclick="
 				location.href='#'">간편식</button>
-			<button type="button" id='ins' class="btn btn-primary onclick="
+			<button type="button" id='ins' class="btn btn-primary" onclick="
 				location.href='#'">즉석식</button>
-			<button type="button" id='sna' class="btn btn-primary onclick="
+			<button type="button" id='sna' class="btn btn-primary" onclick="
 				location.href='#'">과자류</button>
-			<button type="button" id='ice' class="btn btn-primary onclick="
+			<button type="button" id='ice' class="btn btn-primary" onclick="
 				location.href='#'">아이스크림</button>
-			<button type="button" id='foo' class="btn btn-primary onclick="
+			<button type="button" id='foo' class="btn btn-primary" onclick="
 				location.href='#'">식품류</button>
-			<button type="button" id='dri' class="btn btn-primary onclick="
+			<button type="button" id='dri' class="btn btn-primary" onclick="
 				location.href='#'">음료류</button>
-			<button type="button" id='lif' class="btn btn-primary onclick=" location.href='#'">생활용품</button>
+			<button type="button" id='lif' class="btn btn-primary" onclick=" location.href='#'">생활용품</button>
 		    <button type="button" class="btn btn-primary" onclick="location.href='../index.jsp' ">돌아가기</button>
 	</div>
 

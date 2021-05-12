@@ -1,4 +1,4 @@
-<%@page import="java.sql.Connection" %>
+<%@page import="java.sql.Connection"%>
 <%@page import="teamproject.Member"%>
 <%@page import="teamproject.DBManager"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -38,6 +38,7 @@ Object name = session.getAttribute("name");
 		너는 <%=grade %>
 	</div>
 	<form>
+	
 		<button type="button" onclick="location.href='Login/Logout.jsp' ">로그아웃</button>
 	</form>
 	<%} %>

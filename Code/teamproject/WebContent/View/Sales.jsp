@@ -47,19 +47,18 @@
 		document.getElementById('time_select_btn').onclick= function(){
 			var time_select = document.getElementById('time_select');
 			var link= 'selectedPayment.jsp?time_select='+time_select.value;
-			acyncMovePage(link)
+			acyncMovePage(link);
 		}
 		document.getElementById('week_select_btn').onclick=function(){
 			var time_select = document.getElementById('time_select');
 			var link = 'week.jsp?time_select='+time_select.value;
-			acyncMovePage(link)
+			acyncMovePage(link);
 		}
 		document.getElementById('month_select_btn').onclick=function(){
 			var time_select = document.getElementById('time_select');
 			var link = 'selectedPaymentMonth.jsp?time_select='+time_select.value;
-			acyncMovePage(link)
+			acyncMovePage(link);
 		}
-		week_select_btn
 	}
 </script>
 
@@ -126,7 +125,7 @@
 			<input type="date" min="2021-01-01" max="2025-12-31" id="time_select"/>
 			
 			<button type="button" onclick="showDayPayment();">팝업 테스트</button>
-			<button type="button" id="time_select_btn"">일일</button>
+			<button type="button" id="time_select_btn">일일</button>
 <%-- 			<button type="button"  onclick="acyncMovePage('popupTest.jsp')  /> --%>
 			<button type="button" id="week_select_btn">주간</button>
 			<button type="button" id="month_select_btn">월별</button>

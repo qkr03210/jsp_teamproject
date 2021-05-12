@@ -222,14 +222,16 @@ public class Sales_DBManager {
 			Class.forName(DBInfo.mysql_class);
 			conn = DriverManager.getConnection(DBInfo.mysql_url,DBInfo.mysql_id,DBInfo.mysql_pw);
 //			pstmt = conn.prepareStatement("select * from sales where sales_number= '"+sales_number+"'");
-			pstmt = conn.prepareStatement("select sales.product,instant.price,sales.amount,sales.amount*instant.price from sales,instant where sales.sales_number='"+sales_number+"' and sales.product=instant.name");
+			pstmt = conn.prepareStatement("select product.name,product.price,orda.quantity,orda.quantity*product.price as totalPrice\r\n" + 
+					"from orda,product \r\n" + 
+					"where orda.sales_number="+sales_number+" and orda.item_name=product.pd_code;");
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Sales2 ssu = new Sales2();
-				ssu.setName(rs.getString("sales.product"));
-				ssu.setPrice(rs.getInt("instant.price"));
-				ssu.setAmount(rs.getInt("sales.amount"));
-				ssu.setTotalPrice(rs.getInt("sales.amount*instant.price"));
+				ssu.setName(rs.getString("product.name"));
+				ssu.setPrice(rs.getInt("product.price"));
+				ssu.setAmount(rs.getInt("orda.quantity"));
+				ssu.setTotalPrice(rs.getInt("totalPrice"));
 				list.add(ssu);
 			}
 		}catch (Exception e) {
