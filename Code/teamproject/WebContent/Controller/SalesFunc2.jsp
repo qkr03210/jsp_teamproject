@@ -27,8 +27,7 @@
 	ArrayList<Sales2> list = ssdm.select(sls_number);
 
 	if(list!=null){
-		
-		out.println("<a href = '../index.jsp' class ='btn btn-primary'>메인페이지</a>");
+	
 	%>
 	<div class="container mybgwh">
 		<p>주문번호로 검색한 영수증?조회</p>

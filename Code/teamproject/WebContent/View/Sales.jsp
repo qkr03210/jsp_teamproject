@@ -107,7 +107,18 @@
 		$('#logout').on('click',function(){
 			location.href='logout.jsp';
 		})
-		$('#time_select').value(today);​
+// 		$('#time_select').value(today);
+		
+		$("#myTable tr").click(function(){
+			var tdArray = new Array();
+			var td = $(this).children();
+			
+			td.each(function(i){
+				tdArray.push(td.eq(i).text());
+			});
+			var number = tdArray[0];
+			window.open("../Controller/SalesFunc2.jsp?sales_number="+number, "시간 선택", "width=1000, height=500, left=1000, top=50");
+		});
 	})
 </script>
 
@@ -134,10 +145,10 @@
 		</div>
 	</div>
 	
-	<div id="lnb"><p>lnb</p></div>
+	<div id="lnb"><p>임시</p></div>
 	
 	<div id="bodyContents" class="container mybgwh">
-		<table class="table table-dark table-hover">
+		<table id = "myTable" class="table table-dark table-hover">
 			<thead>
 				<tr>
 					

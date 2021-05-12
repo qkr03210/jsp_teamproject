@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Sales_DBManager {
 	
+	//전체 매출 기록 조회
 	public ArrayList<Sales1> select() {
 		ArrayList<Sales1> list = new ArrayList<Sales1>();
 		Connection conn = null;	;
@@ -57,7 +58,7 @@ public class Sales_DBManager {
 		return list;
 	}
 	
-	
+	//일일 매출 기록 조회(선택한 날짜: time-> 2021-05-07
 	public ArrayList<Sales1> selected_payment(String time) {
 		ArrayList<Sales1> list = new ArrayList<Sales1>();
 		Connection conn = null;	;
@@ -107,6 +108,7 @@ public class Sales_DBManager {
 		return list;
 	}
 	
+	//월 매출 기록 조회(선택한 날짜: time-> 2021-05
 	public ArrayList<Sales1> selected_payment_month(String time) {
 		String m_time=time.substring(0, 7);
 		ArrayList<Sales1> list = new ArrayList<Sales1>();
@@ -156,6 +158,8 @@ public class Sales_DBManager {
 		}
 		return list;
 	}
+	
+	//주간 매출 기록 조회(선택한 날짜: time-> 2021-05-07
 	public ArrayList<Sales1> selected_payment_week(String time) {
 		time= time.replaceAll("-", "/");
 		ArrayList<Sales1> list = new ArrayList<Sales1>();
@@ -213,6 +217,8 @@ public class Sales_DBManager {
 		}
 		return list;
 	}
+	
+	//선택한 주문번호로 상세조회
 	public ArrayList<Sales2> select(String sales_number) {
 		ArrayList<Sales2> list = new ArrayList<Sales2>();
 		Connection conn = null;	
