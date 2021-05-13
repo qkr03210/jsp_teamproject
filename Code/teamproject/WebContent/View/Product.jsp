@@ -34,8 +34,8 @@ ArrayList<Product> list = pddm.select();
 <script type="text/javascript">
       window.onload = function () {
          document.getElementById('pd_search').onclick = function () {
-            var name = document.getElementById('name');
-            location.href = '../Controller/ProductFunc1.jsp?name=' + name.value;
+            var pd_name = document.getElementById('pd_name');
+            location.href = '../Controller/ProductFunc1.jsp?pd_name=' + pd_name.value;
          }
       }
 
@@ -45,6 +45,7 @@ ArrayList<Product> list = pddm.select();
       //    })
    </script>
 
+<!-- 카드 숨김/표시 토글 함수-->
 <script>
       $(document).ready(function () {
          $("#all").click(function () {
@@ -97,7 +98,7 @@ ArrayList<Product> list = pddm.select();
 </head>
 
 <body>
-	<!-- Navigation-->
+	<!-- 상단 네비바-->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container">
 			<a class="navbar-brand" href="#!">Start Bootstrap</a>
@@ -118,6 +119,7 @@ ArrayList<Product> list = pddm.select();
 			</div>
 		</div>
 	</nav>
+	<!--왼쪽 목록 리스트-->
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
@@ -144,33 +146,28 @@ ArrayList<Product> list = pddm.select();
 					</ol>
 					<div class="carousel-inner" role="listbox">
 						<div class="carousel-item active">
-							<img class="d-block img-fluid"
-								src="https://via.placeholder.com/900x350" alt="First slide" />
+							<img class="d-block img-fluid" src="https://via.placeholder.com/900x350" alt="First slide" />
 						</div>
 						<div class="carousel-item">
-							<img class="d-block img-fluid"
-								src="https://via.placeholder.com/900x350" alt="Second slide" />
+							<img class="d-block img-fluid" src="https://via.placeholder.com/900x350" alt="Second slide" />
 						</div>
 						<div class="carousel-item">
-							<img class="d-block img-fluid"
-								src="https://via.placeholder.com/900x350" alt="Third slide" />
+							<img class="d-block img-fluid" src="https://via.placeholder.com/900x350" alt="Third slide" />
 						</div>
 					</div>
-					<a class="carousel-control-prev" href="#carouselExampleIndicators"
-						role="button" data-slide="prev"> <span
-						class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-						class="sr-only">Previous</span>
-					</a> <a class="carousel-control-next" href="#carouselExampleIndicators"
-						role="button" data-slide="next"> <span
-						class="carousel-control-next-icon" aria-hidden="true"></span> <span
-						class="sr-only">Next</span>
+					<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
 					</a>
-					<div class="form-inline">
-						<input type="text" class="form-control col-md-10 mb-2 my-4 mr-4"
-							placeholder="Enter search" id="product_name"> <input
-							type="button" value="검색" id="pd_search" class="btn btn-primary" />
-					</div>
+					<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next"> 
+						<span class="carousel-control-next-icon" aria-hidden="true"></span> 
+						<span class="sr-only">Next</span>
+					</a>
 				</div>
+					<div class="form-inline">
+						<input type="text" class="form-control col-md-10 mb-2 my-4 mr-4" placeholder="Enter search" id="pd_name">
+						<input type="button" value="검색" id="pd_search" class="btn btn-primary" />
+					</div>
 				<div class="row" id="all_result">
 					<%
 					for (int i = 0; i < list.size(); i++) {
@@ -178,11 +175,10 @@ ArrayList<Product> list = pddm.select();
 					%>
 					<div class="col-lg-4 col-md-6 mb-4">
 					<div class="card h-100">
-							<a href="#!"><img class="card-img-top"
-								src="https://via.placeholder.com/700x400" alt="..." /></a>
+							<a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
 							<div class="card-body">
-								<h10 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
-									<%out.println(ppu.getPd_name());%>
+								<h9 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
+									<%out.println(ppu.getPd_name());%> </h9>
 								</a>
 								<p class="card-text">
 									<%out.print(ppu.getPd_classific() + " 유통기한 : ");%>
@@ -193,8 +189,7 @@ ArrayList<Product> list = pddm.select();
 								</h5>
 							</div>
 							<div class="card-footer">
-								<small class="text-muted"> <%out.print(ppu.getPd_type());%>
-								</small>
+								<small class="text-muted"> <%out.print(ppu.getPd_type());%> </small>
 							</div>
 						</div>
 					</div>
@@ -210,11 +205,10 @@ ArrayList<Product> list = pddm.select();
 					%>
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card h-100">
-							<a href="#!"><img class="card-img-top"
-								src="https://via.placeholder.com/700x400" alt="..." /></a>
+							<a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
 							<div class="card-body">
-								<h10 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
-									<%out.println(ppu.getPd_name());%>
+								<h9 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
+									<%out.println(ppu.getPd_name());%> </h9>
 								</a>
 								<p class="card-text">
 									<%out.print(ppu.getPd_classific() + " 유통기한 : ");%>
@@ -225,8 +219,7 @@ ArrayList<Product> list = pddm.select();
 								</h5>
 							</div>
 							<div class="card-footer">
-								<small class="text-muted"> <%out.print(ppu.getPd_type());%>
-								</small>
+								<small class="text-muted"> <%out.print(ppu.getPd_type());%> </small>
 							</div>
 						</div>
 					</div>
@@ -243,11 +236,10 @@ ArrayList<Product> list = pddm.select();
 					%>
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card h-100">
-							<a href="#!"><img class="card-img-top"
-								src="https://via.placeholder.com/700x400" alt="..." /></a>
+							<a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
 							<div class="card-body">
-								<h10 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
-									<%out.println(ppu.getPd_name());%>
+								<h9 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
+									<%out.println(ppu.getPd_name());%> </h9>
 								</a>
 								<p class="card-text">
 									<%out.print(ppu.getPd_classific() + " 유통기한 : ");%>
@@ -258,8 +250,7 @@ ArrayList<Product> list = pddm.select();
 								</h5>
 							</div>
 							<div class="card-footer">
-								<small class="text-muted"> <%out.print(ppu.getPd_type());%>
-								</small>
+								<small class="text-muted"> <%out.print(ppu.getPd_type());%> </small>
 							</div>
 						</div>
 					</div>
@@ -276,11 +267,10 @@ ArrayList<Product> list = pddm.select();
 					%>
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card h-100">
-							<a href="#!"><img class="card-img-top"
-								src="https://via.placeholder.com/700x400" alt="..." /></a>
+							<a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
 							<div class="card-body">
-								<h10 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
-									<%out.println(ppu.getPd_name());%>
+								<h9 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
+									<%out.println(ppu.getPd_name());%> </h9>
 								</a>
 								<p class="card-text">
 									<%out.print(ppu.getPd_classific() + " 유통기한 : ");%>
@@ -312,9 +302,9 @@ ArrayList<Product> list = pddm.select();
 							<a href="#!"><img class="card-img-top"
 								src="https://via.placeholder.com/700x400" alt="..." /></a>
 							<div class="card-body">
-								<h10 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
-									<%out.println(ppu.getPd_name());%>
-								</a>
+								<h9 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
+									<%out.println(ppu.getPd_name());%> </h9> 
+									</a>
 								<p class="card-text">
 									<%out.print(ppu.getPd_classific() + " 유통기한 : ");%>
 									<%out.print(ppu.getPd_exdate() + "일");%>
@@ -345,8 +335,8 @@ ArrayList<Product> list = pddm.select();
 							<a href="#!"><img class="card-img-top"
 								src="https://via.placeholder.com/700x400" alt="..." /></a>
 							<div class="card-body">
-								<h10 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
-									<%out.println(ppu.getPd_name());%>
+								<h9 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
+									<%out.println(ppu.getPd_name());%> </h9>
 								</a>
 								<p class="card-text">
 									<%out.print(ppu.getPd_classific() + " 유통기한 : ");%>
@@ -378,8 +368,8 @@ ArrayList<Product> list = pddm.select();
 							<a href="#!"><img class="card-img-top"
 								src="https://via.placeholder.com/700x400" alt="..." /></a>
 							<div class="card-body">
-								<h10 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
-									<%out.println(ppu.getPd_name());%>
+								<h9 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
+									<%out.println(ppu.getPd_name());%> </h9>
 								</a>
 								<p class="card-text">
 									<%out.print(ppu.getPd_classific() + " 유통기한 : ");%>
@@ -411,8 +401,8 @@ ArrayList<Product> list = pddm.select();
 							<a href="#!"><img class="card-img-top"
 								src="https://via.placeholder.com/700x400" alt="..." /></a>
 							<div class="card-body">
-								<h10 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
-									<%out.println(ppu.getPd_name());%>
+								<h9 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%>
+									<%out.println(ppu.getPd_name());%> </h9>
 								</a>
 								<p class="card-text">
 									<%out.print(ppu.getPd_classific() + " 유통기한 : ");%>
