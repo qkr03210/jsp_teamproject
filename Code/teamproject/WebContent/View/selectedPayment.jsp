@@ -1,10 +1,15 @@
-
+<%@page import="teamproject.Sales1"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="teamproject.Sales_DBManager"%>
-<%@page import="teamproject.Sales2"%>
-<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+    pageEncoding="UTF-8"%>
+    
+    
+<%
+	Sales_DBManager ssdm = new Sales_DBManager();
+	String selectedTime = request.getParameter("time_select");
+	ArrayList<Sales1> list = ssdm.selected_payment(selectedTime);
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,82 +25,59 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<%
-	String sls_number = request.getParameter("sales_number");
-	int result=0;
- 	Sales_DBManager ssdm = new Sales_DBManager();
-	ArrayList<Sales2> list = ssdm.select(sls_number);
-
-	if(list!=null){
-		
-		out.println("<a href = '../index.jsp' class ='btn btn-primary'>메인페이지</a>");
-	%>
-	<div class="container mybgwh">
-		<p>주문번호로 검색한 영수증?조회</p>
+		<div  class="container mybgwh">
 		<table class="table table-dark table-hover">
 			<thead>
 				<tr>
-					<td>제품명</td>
-					<td>가격</td>
-					<td>수량</td>
-					<td>총합</td>
+					<td>주문번호</td>
+					<td>회원</td>
+					<td>결제금액</td>
+					<td>결제방법</td>
+					<td>결제일시</td>
 				</tr>
 			</thead>
 			<tbody>
 				<%
 					for (int i = 0; i < list.size(); i++) {
-						Sales2 ssu = list.get(i);
+						Sales1 ssu = list.get(i);
 				%>
 				<tr>
 					<td>
 						<%
-							out.print(ssu.getName());
+							out.print(ssu.getSales_number());
 						%>
 					</td>
 					<td>
 						<%
-							out.print(ssu.getPrice());
+						if(ssu.getCid()!=null)
+						{
+							out.print(ssu.getCid());
+						}
+						else
+							out.print("");
 						%>
 					</td>
 					<td>
 						<%
-							out.print(ssu.getAmount());
+						  	out.print(ssu.getTotalPrice());
 						%>
 					</td>
 					<td>
 						<%
-							result+=ssu.getTotalPrice();
-							out.print(ssu.getTotalPrice());
+							out.print(ssu.getPayment_method_type());
 						%>
 					</td>
+					<td>
+						<%
+							out.print(ssu.getDate());
+						%>
+					</td> 
 				</tr>
 				<%
 					}
 				%>
-				<tr>
-					<td>
-					</td>
-					<td>
-					</td>
-					<td>
-						<p>합계</p>
-					</td>
-					<td>
-					<%out.print(result); %>
-					</td>
-				</tr>
 			</tbody>
 		</table>
 	</div>
-	<%
-		
-		
-	}
-	else
-	{
-		out.println("로그인실패");
-		
-	}
-%>
 </body>
 </html>
