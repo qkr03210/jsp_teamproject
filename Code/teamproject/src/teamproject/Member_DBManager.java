@@ -78,6 +78,41 @@ DriverManager.getConnection(DBInfo.mysql_url, DBInfo.mysql_id, DBInfo.mysql_pw);
 		}
 		return mem;
 	}
-
+	public String findId(String name, String phone) {
+		String id = null;
+		
+		Connection conn =  null;	// DB 연결객체
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			// oracle mysql mssql
+			Class.forName(DBInfo.mysql_class);
+			conn = 
+					DriverManager.getConnection(DBInfo.mysql_url, DBInfo.mysql_id, DBInfo.mysql_pw);
+			pstmt = conn.prepareStatement(""
+							+ "SELECT * FROM member " 
+							+ " WHERE NAME=? AND PHONE=? "
+							+ "");
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				id = rs.getString("id");
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try{
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception ex){
+				
+			}
+		}
+		return id;
+	}
 }
+
 
