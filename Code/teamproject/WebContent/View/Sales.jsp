@@ -38,6 +38,11 @@
 </style>	
 <script type="text/javascript">
 	window.onload = function() {
+		today = new Date();
+		today = today.toISOString().slice(0, 10);
+		bir = document.getElementById("time_select");
+		bir.value = today;
+		
 		document.getElementById('sn_search').onclick = function() {
 			var sales_number = document.getElementById('sales_number');
 			// 			alert('id='+id.value);
@@ -86,7 +91,7 @@
 
 <!-- 일일 팝업 -->
 <script type="text/javascript">
-  function showDayPayment() { window.open("popupTest.jsp", "시간 선택", "width=400, height=300, left=100, top=50"); }
+  function showDayPayment() { window.open("popupTest.jsp", "시간 선택1", "width=400, height=300, left=100, top=50 ,status=no"); }
 </script>
 
 <script type="text/javascript">
@@ -117,7 +122,7 @@
 				tdArray.push(td.eq(i).text());
 			});
 			var number = tdArray[0];
-			window.open("../Controller/SalesFunc2.jsp?sales_number="+number, "시간 선택", "width=1000, height=500, left=1000, top=50");
+			window.open("../Controller/SalesFunc2.jsp?sales_number="+number, "결제 내역 상세보기", "width=1000, height=500, left=500, top=50");
 		});
 	})
 </script>
@@ -135,7 +140,7 @@
 		<div id="btn-Title">
 			<input type="date" min="2021-01-01" max="2025-12-31" id="time_select"/>
 			
-			<button type="button" onclick="showDayPayment();">팝업 테스트</button>
+<!-- 			<button type="button" onclick="showDayPayment();">팝업 테스트</button> -->
 			<button type="button" id="time_select_btn">일일</button>
 <%-- 			<button type="button"  onclick="acyncMovePage('popupTest.jsp')  /> --%>
 			<button type="button" id="week_select_btn">주간</button>

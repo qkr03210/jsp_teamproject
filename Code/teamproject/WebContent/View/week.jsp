@@ -12,6 +12,22 @@
 	ArrayList<Sales1> list = ssdm.selected_payment_week(selectedTime);
 %>    
 <!DOCTYPE html>
+
+<script type="text/javascript">
+	$('document').ready(function(){
+		$("#myTable tr").click(function(){
+			var tdArray = new Array();
+			var td = $(this).children();
+			
+			td.each(function(i){
+				tdArray.push(td.eq(i).text());
+			});
+			var number = tdArray[0];
+			window.open("../Controller/SalesFunc2.jsp?sales_number="+number, "결제 내역 상세보기", "width=1000, height=500, left=500, top=50");
+		});
+	})
+</script>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -27,7 +43,7 @@
 </head>
 <body>
 		<div  class="container mybgwh">
-		<table class="table table-dark table-hover">
+		<table id = "myTable" class="table table-dark table-hover">
 			<thead>
 				<tr>
 					<td>주문번호</td>

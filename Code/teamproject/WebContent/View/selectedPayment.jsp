@@ -12,9 +12,23 @@
 %>    
 <!DOCTYPE html>
 <html>
+<script type="text/javascript">
+	$('document').ready(function(){
+		$("#myTable tr").click(function(){
+			var tdArray = new Array();
+			var td = $(this).children();
+			
+			td.each(function(i){
+				tdArray.push(td.eq(i).text());
+			});
+			var number = tdArray[0];
+			window.open("../Controller/SalesFunc2.jsp?sales_number="+number, "시간 선택", "width=1000, height=500, left=500, top=50");
+		});
+	})
+</script>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>결제 내역 상세 보기</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script
@@ -26,7 +40,7 @@
 </head>
 <body>
 		<div  class="container mybgwh">
-		<table class="table table-dark table-hover">
+		<table id="myTable" class="table table-dark table-hover">
 			<thead>
 				<tr>
 					<td>주문번호</td>
