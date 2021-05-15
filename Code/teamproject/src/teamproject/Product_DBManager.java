@@ -57,7 +57,7 @@ public class Product_DBManager {
 		try {
 			Class.forName(DBInfo.mysql_class);
 			conn = DriverManager.getConnection(DBInfo.mysql_url,DBInfo.mysql_id,DBInfo.mysql_pw);
-			pstmt = conn.prepareStatement("select * from product limit 0, 100");
+			pstmt = conn.prepareStatement("select * from product where name like \"%" + prod_name + "%\" limit 0, 100");
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
