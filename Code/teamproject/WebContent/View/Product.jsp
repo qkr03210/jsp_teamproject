@@ -109,10 +109,10 @@ ArrayList<Product> list = pddm.select();
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a class="nav-link" href="#!">
+					<li class="nav-item active"><a class="nav-link" href="../index.jsp">
 							Home <span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+					<li class="nav-item"><a class="nav-link" href="stock.jsp">재고</a></li>
 					<li class="nav-item"><a class="nav-link" href="#!">Services</a></li>
 					<li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
 				</ul>
@@ -122,7 +122,7 @@ ArrayList<Product> list = pddm.select();
 	<!--왼쪽 목록 리스트-->
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-3">
+			<div class="col-lg-3 mb-5">
 				<h1 class="my-4">Shop Name</h1>
 				<div class="list-group">
 					<a class="list-group-item" id="all" href="#!">전체</a> <a
@@ -164,11 +164,11 @@ ArrayList<Product> list = pddm.select();
 						<span class="sr-only">Next</span>
 					</a>
 				</div>
-					<div class="form-inline">
+					<div class="form-inline mb-4">
 						<input type="text" class="form-control col-md-10 mb-2 my-4 mr-4" placeholder="Enter search" id="pd_name">
 						<input type="button" value="검색" id="pd_search" class="btn btn-primary" />
 					</div>
-				<div class="row" id="all_result">
+				<div class="row mb-4" id="all_result">
 					<%
 					for (int i = 0; i < list.size(); i++) {
 						Product ppu = list.get(i);
@@ -197,7 +197,7 @@ ArrayList<Product> list = pddm.select();
 					}
 					%>
 				</div>
-				<div class="row" id="sim_result">
+				<div class="row mb-4" id="sim_result">
 					<%
 					for (int i = 0; i < list.size(); i++) {
 						Product ppu = list.get(i);
@@ -228,7 +228,7 @@ ArrayList<Product> list = pddm.select();
 					}
 					%>
 				</div>
-				<div class="row" id="ins_result">
+				<div class="row mb-4" id="ins_result">
 					<%
 					for (int i = 0; i < list.size(); i++) {
 						Product ppu = list.get(i);
@@ -259,7 +259,7 @@ ArrayList<Product> list = pddm.select();
 					}					
 					%>
 				</div>
-				<div class="row" id="sna_result">
+				<div class="row mb-4" id="sna_result">
 					<%
 					for (int i = 0; i < list.size(); i++) {
 						Product ppu = list.get(i);
@@ -291,7 +291,7 @@ ArrayList<Product> list = pddm.select();
 					}
 					%>
 				</div>
-				<div class="row" id="ice_result">
+				<div class="row mb-4" id="ice_result">
 					<%
 					for (int i = 0; i < list.size(); i++) {
 						Product ppu = list.get(i);
@@ -324,7 +324,7 @@ ArrayList<Product> list = pddm.select();
 					}
 					%>
 				</div>
-				<div class="row" id="foo_result">
+				<div class="row mb-4" id="foo_result">
 					<%
 					for (int i = 0; i < list.size(); i++) {
 						Product ppu = list.get(i);
@@ -357,7 +357,7 @@ ArrayList<Product> list = pddm.select();
 					}
 					%>
 				</div>
-				<div class="row" id="dri_result">
+				<div class="row mb-4" id="dri_result">
 					<%
 					for (int i = 0; i < list.size(); i++) {
 						Product ppu = list.get(i);
@@ -390,7 +390,7 @@ ArrayList<Product> list = pddm.select();
 					}
 					%>
 				</div>
-				<div class="row" id="lif_result">
+				<div class="row mb-4" id="lif_result">
 					<%
 					for (int i = 0; i < list.size(); i++) {
 						Product ppu = list.get(i);

@@ -97,8 +97,11 @@
 						<div class="card h-100">
 							<a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
 							<div class="card-body">
-								<h10 class="card-title"> <a href="#!"> <%out.println(ppu.getPd_code() + ")");%> <%out.println(ppu.getPd_name());%>
-								</a>
+								<h6 class="card-title">
+								 <a href="#!">
+								 <%out.println(ppu.getPd_code() + ")");%> <%out.println(ppu.getPd_name());%>
+								 </a>
+								 </h6>
 								<p class="card-text">
 									<%out.print(ppu.getPd_classific() + " 유통기한 : ");%>
 									<%out.print(ppu.getPd_exdate() + "일");%>
