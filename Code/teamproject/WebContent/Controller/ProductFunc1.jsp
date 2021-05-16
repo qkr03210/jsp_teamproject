@@ -34,7 +34,7 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active"><a class="nav-link" href="#!"> Home <span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+					<li class="nav-item"><a class="nav-link" href="../View/stock.jsp">재고</a></li>
 					<li class="nav-item"><a class="nav-link" href="#!">Services</a></li>
 					<li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
 				</ul>
@@ -48,13 +48,7 @@
 				<h1 class="my-4">Shop Name</h1>
 				<div class="list-group">
 					<a class="list-group-item" id="all" href="#!">전체</a>
-					<a class="list-group-item" id="sim" href="#!">간편식품</a>
-					<a class="list-group-item" id="ins" href="#!">즉석식품</a>
-					<a class="list-group-item" id="sna" href="#!">과자</a>
-					<a class="list-group-item" id="ice" href="#!">아이스크림</a>
-					<a class="list-group-item" id="foo" href="#!">기타식품</a>
-					<a class="list-group-item" id="dri" href="#!">음료</a>
-					<a class="list-group-item" id="lif" href="#!">생활용품</a>
+					<a class="list-group-item" id="sim" href="../View/Product.jsp">상품페이지로 이동</a>
 				</div>
 			</div>
 			<div class="col-lg-9">
@@ -84,16 +78,16 @@
 					<span class="sr-only">Next</span>
 					</a>
 				</div>
-					<div class="form-inline">
-						<input type="text" class="form-control col-md-10 mb-2 my-4 mr-4" placeholder="Enter search" id="product_name">
-						<input type="button" value="검색" id="pd_search" class="btn btn-primary"/>
-					</div>
+<!-- 					<div class="form-inline"> -->
+<!-- 						<input type="text" class="form-control col-md-10 mb-2 my-4 mr-4" placeholder="Enter search" id="product_name"> -->
+<!-- 						<input type="button" value="검색" id="pd_search" class="btn btn-primary"/> -->
+<!-- 					</div> -->
 				<div class="row">
 					<%
 					for (int i = 0; i < list.size(); i++) {
 						Product ppu = list.get(i);
 					%>
-					<div class="col-lg-4 col-md-6 mb-4">
+					<div class="col-lg-4 col-md-6 mt-4 mb-4">
 						<div class="card h-100">
 							<a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
 							<div class="card-body">
@@ -103,12 +97,13 @@
 								 </a>
 								 </h6>
 								<p class="card-text">
-									<%out.print(ppu.getPd_classific() + " 유통기한 : ");%>
-									<%out.print(ppu.getPd_exdate() + "일");%>
+									<%out.print(ppu.getPd_classific());%>
+									<br>
+									<%out.print(" 유통기한 : " + ppu.getPd_exdate() + "일");%>
 								</p>
-								<h5>
+								<h6>
 									<%out.print(ppu.getPd_price() + "원");%>
-								</h5>
+								</h6>
 							</div>
 							<div class="card-footer">
 								<small class="text-muted">

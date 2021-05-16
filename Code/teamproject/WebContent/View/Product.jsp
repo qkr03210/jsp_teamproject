@@ -181,12 +181,13 @@ ArrayList<Product> list = pddm.select();
 									<%out.println(ppu.getPd_name());%> </h9>
 								</a>
 								<p class="card-text">
-									<%out.print(ppu.getPd_classific() + " 유통기한 : ");%>
-									<%out.print(ppu.getPd_exdate() + "일");%>
+									<%out.print(ppu.getPd_classific());%>
+									<br>
+									<%out.print(" 유통기한 : " + ppu.getPd_exdate() + "일");%>
 								</p>
-								<h5>
+								<h6>
 									<%out.print(ppu.getPd_price() + "원");%>
-								</h5>
+								</h6>
 							</div>
 							<div class="card-footer">
 								<small class="text-muted"> <%out.print(ppu.getPd_type());%> </small>
