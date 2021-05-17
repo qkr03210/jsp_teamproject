@@ -252,4 +252,42 @@ public class Sales_DBManager {
 		}
 		return list;
 	}
+	
+	//선택한 주문번호로 상세조회
+	//5타입에 제품5개씩
+	public ArrayList<SaleProduct> countPopularItem(String month) {
+		ArrayList<SaleProduct> list = new ArrayList<SaleProduct>();
+		Connection conn = null;	
+		PreparedStatement pstmt = null;	
+		ResultSet rs = null;	
+		try {
+			Class.forName(DBInfo.mysql_class);
+			conn = DriverManager.getConnection(DBInfo.mysql_url,DBInfo.mysql_id,DBInfo.mysql_pw);
+//			pstmt = conn.prepareStatement("select * from sales where sales_number= '"+sales_number+"'");
+			pstmt = conn.prepareStatement("select product.classific,product.name,sum(quantity) as totalAmount\r\n" + 
+					"from orda,payment,product\r\n" + 
+					"where\r\n" + 
+					"date_format(payment.date,'%Y-%m')=\""+month+"\" and payment.sales_number = orda.sales_number and orda.item_name=product.pd_code\r\n" + 
+					"group by classific,item_name\r\n" + 
+					"order by totalAmount desc;");
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				SaleProduct ssu = new SaleProduct();
+				ssu.setClassific(rs.getString("product.classific"));
+				ssu.setItem_name(rs.getString(""));
+				ssu.setTotalAmount(rs.getInt("totalAmount"));
+				list.add(ssu);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (rs!= null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			}catch (Exception e) {}
+		}
+		return list;
+	}
 }

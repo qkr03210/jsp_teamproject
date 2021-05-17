@@ -145,7 +145,6 @@
 <%-- 			<button type="button"  onclick="acyncMovePage('popupTest.jsp')  /> --%>
 			<button type="button" id="week_select_btn">주간</button>
 			<button type="button" id="month_select_btn">월별</button>
-			<button type="button" onclick="location.href='#' ">물품별</button>
 			<button type="button" onclick="location.href='../index.jsp' ">돌아가기</button>
 		</div>
 	</div>
