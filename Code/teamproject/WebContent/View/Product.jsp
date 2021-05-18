@@ -96,7 +96,18 @@
             $("#dri_result").hide();
             $("#lif_result").hide();
          }
-         allhide();
+         
+         function startView(){
+             $("#sim_result").hide();
+             $("#ins_result").hide();
+             $("#sna_result").hide();
+             $("#ice_result").hide();
+             $("#foo_result").hide();
+             $("#dri_result").hide();
+             $("#lif_result").hide();
+         }
+//          allhide();
+         startView();
       });
    </script>
 
@@ -130,7 +141,7 @@
 			<div class="col-lg-3 mb-5">
 				<h1 class="my-4">Shop Name</h1>
 				<div class="list-group">
-					<a class="list-group-item" id="all" href="#!">전체</a> <a
+					<a class="list-group-item" id="all" href="../View/Product.jsp">전체</a> <a
 						class="list-group-item" id="sim" href="#!">간편식품</a> <a
 						class="list-group-item" id="ins" href="#!">즉석식품</a> <a
 						class="list-group-item" id="sna" href="#!">과자</a> <a
