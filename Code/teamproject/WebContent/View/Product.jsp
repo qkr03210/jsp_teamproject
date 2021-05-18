@@ -4,11 +4,16 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-Product_DBManager pddm = new Product_DBManager();
-ArrayList<Product> list = pddm.select();
+	String pd_name = request.getParameter("pd_name");
+	Product_DBManager pddm = new Product_DBManager();
+	ArrayList<Product> list = null;
+	
+	if(pd_name == null)
+		list = pddm.select();
+	else
+		list = pddm.select2(pd_name);
 %>
 <!DOCTYPE html>
 <html>
@@ -35,7 +40,7 @@ ArrayList<Product> list = pddm.select();
       window.onload = function () {
          document.getElementById('pd_search').onclick = function () {
             var pd_name = document.getElementById('pd_name');
-            location.href = '../Controller/ProductFunc1.jsp?pd_name=' + pd_name.value;
+            location.href = '../View/Product.jsp?pd_name=' + pd_name.value;
          }
       }
 
@@ -49,7 +54,7 @@ ArrayList<Product> list = pddm.select();
 <script>
       $(document).ready(function () {
          $("#all").click(function () {
-        	allhide();
+       	allhide();
             $("#all_result").toggle();
          });
          $("#sim").click(function () {
@@ -82,7 +87,7 @@ ArrayList<Product> list = pddm.select();
          });
 
          function allhide() {
-            $("#all_result").hide();
+             $("#all_result").hide();
             $("#sim_result").hide();
             $("#ins_result").hide();
             $("#sna_result").hide();
@@ -165,7 +170,7 @@ ArrayList<Product> list = pddm.select();
 					</a>
 				</div>
 					<div class="form-inline mb-4">
-						<input type="text" class="form-control col-md-10 mb-2 my-4 mr-4" placeholder="Enter search" id="pd_name">
+						<input type="text" class="form-control col-md-10 mb-2 my-4 mr-4" placeholder="Enter search" id="pd_name" value="<%=pd_name %>"/>
 						<input type="button" value="검색" id="pd_search" class="btn btn-primary" />
 					</div>
 				<div class="row mb-4" id="all_result">
