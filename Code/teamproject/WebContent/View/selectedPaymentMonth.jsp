@@ -9,7 +9,7 @@
 <%
 	Sales_DBManager ssdm = new Sales_DBManager();
 	String selectedTime = request.getParameter("time_select");
-	System.out.print(selectedTime);
+// 	System.out.print(selectedTime);
 	ArrayList<Sales1> list = ssdm.selected_payment_month(selectedTime);
 	ArrayList<SaleProduct> rankingList = ssdm.countPopularItem(selectedTime);
 	int ranking_cnt =ssdm.countProductClassific(selectedTime);
@@ -61,11 +61,11 @@
 			</thead>
 			<tbody>
 				<%
+					String cls=null;
 					for (int i = 0; i < rankingList.size(); i++) {
-						String cls=null;
 						SaleProduct sp = rankingList.get(i);
 
-						if(i!=0 && sp.getClassific().equals(cls))
+						if(i!=0 && sp.getClassific().equals(cls)==false)
 						{
 							%>
 				<tr>
