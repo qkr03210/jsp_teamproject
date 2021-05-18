@@ -254,8 +254,10 @@ public class Sales_DBManager {
 	}
 	
 	//선택한 주문번호로 상세조회
-	//5타입에 제품5개씩
+	//7타입에 제품5개씩
 	public ArrayList<SaleProduct> countPopularItem(String month) {
+		String m_time=month.substring(0, 7);
+		System.out.print(m_time);
 		ArrayList<SaleProduct> list = new ArrayList<SaleProduct>();
 		Connection conn = null;	
 		PreparedStatement pstmt = null;	
@@ -264,18 +266,23 @@ public class Sales_DBManager {
 			Class.forName(DBInfo.mysql_class);
 			conn = DriverManager.getConnection(DBInfo.mysql_url,DBInfo.mysql_id,DBInfo.mysql_pw);
 //			pstmt = conn.prepareStatement("select * from sales where sales_number= '"+sales_number+"'");
-			pstmt = conn.prepareStatement("select product.classific,product.name,sum(quantity) as totalAmount\r\n" + 
-					"from orda,payment,product\r\n" + 
-					"where\r\n" + 
-					"date_format(payment.date,'%Y-%m')=\""+month+"\" and payment.sales_number = orda.sales_number and orda.item_name=product.pd_code\r\n" + 
-					"group by classific,item_name\r\n" + 
-					"order by totalAmount desc;");
+			pstmt = conn.prepareStatement("WITH productRanking (\r\n" + 
+					"   classific,p_name,totalPrice,ranking\r\n" + 
+					") AS (\r\n" + 
+					"   select product.classific,product.name,sum(orda.quantity),rank() over(partition by product.classific order by sum(orda.quantity) desc ) as ranking\r\n" + 
+					"   from orda,product,payment\r\n" + 
+					"   where payment.sales_number=orda.sales_number and orda.item_name = product.pd_code and date_format(payment.date,'%Y-%m')=\""+m_time+"\"\r\n" + 
+					"   group by product.name\r\n" + 
+					")select *\r\n" + 
+					"from productRanking\r\n" + 
+					"where ranking<4;");
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				SaleProduct ssu = new SaleProduct();
-				ssu.setClassific(rs.getString("product.classific"));
-				ssu.setItem_name(rs.getString(""));
-				ssu.setTotalAmount(rs.getInt("totalAmount"));
+				ssu.setClassific(rs.getString("classific"));
+				ssu.setItem_name(rs.getString("p_name"));
+				ssu.setTotalAmount(rs.getInt("totalPrice"));
+				ssu.setRanking(rs.getInt("ranking"));
 				list.add(ssu);
 			}
 		}catch (Exception e) {
@@ -290,4 +297,45 @@ public class Sales_DBManager {
 		}
 		return list;
 	}
+	
+	//선택한 주문번호로 상세조회
+		//7타입에 제품5개씩
+		public int countProductClassific(String month) {
+			String m_time=month.substring(0, 7);
+			int count=0;
+			Connection conn = null;	
+			PreparedStatement pstmt = null;	
+			ResultSet rs = null;	
+			try {
+				Class.forName(DBInfo.mysql_class);
+				conn = DriverManager.getConnection(DBInfo.mysql_url,DBInfo.mysql_id,DBInfo.mysql_pw);
+//				pstmt = conn.prepareStatement("select * from sales where sales_number= '"+sales_number+"'");
+				pstmt = conn.prepareStatement("WITH productRanking (\r\n" + 
+						"   classific,p_name,totalAmount,ranking\r\n" + 
+						") AS (\r\n" + 
+						"   select product.classific,product.name,sum(orda.quantity),rank() over(partition by product.classific order by sum(orda.quantity) desc) as ranking\r\n" + 
+						"   from orda,product,payment\r\n" + 
+						"   where payment.sales_number=orda.sales_number and orda.item_name = product.pd_code and date_format(payment.date,'%Y-%m')=\""+m_time+"\"\r\n" + 
+						"   group by product.name\r\n" + 
+						"),count as\r\n" + 
+						"(select *\r\n" + 
+						"from productRanking\r\n" + 
+						"where ranking<4\r\n" + 
+						")select count(distinct classific) as cnt from count;");
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					count=rs.getInt("cnt");
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			finally {
+				try {
+					if (rs!= null) rs.close();
+					if (pstmt != null) pstmt.close();
+					if (conn != null) conn.close();
+				}catch (Exception e) {}
+			}
+			return count;
+		}
 }

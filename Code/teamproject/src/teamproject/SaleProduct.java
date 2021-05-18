@@ -2,11 +2,19 @@ package teamproject;
 
 public class SaleProduct {
 	
+
 	String classific;//타입같음
 	String item_name;//이름
 	int totalAmount;
+	int ranking;
 	
 	
+	public int getRanking() {
+		return ranking;
+	}
+	public void setRanking(int ranking) {
+		this.ranking = ranking;
+	}
 	public String getClassific() {
 		return classific;
 	}
@@ -25,10 +33,10 @@ public class SaleProduct {
 	public void setTotalAmount(int totalAmount) {
 		this.totalAmount = totalAmount;
 	}
+
 	@Override
 	public String toString() {
 		return "SaleProduct [classific=" + classific + ", item_name=" + item_name + ", totalAmount=" + totalAmount
-				+ ", toString()=" + super.toString() + "]";
+				+ ", ranking=" + ranking + ", toString()=" + super.toString() + "]";
 	}
-
 }
