@@ -16,7 +16,7 @@
 %>
 <!DOCTYPE html>
 <html>
-
+<!-- 테이블 클릭시 상세보기 -->
 <script type="text/javascript">
 	$('document').ready(function(){
 		$("#myTable tr").click(function(){
@@ -31,9 +31,17 @@
 		});
 	})
 </script>
+해당 월 상품
 <script type="text/javascript">
-	
+var data=[];
+<%
+for(int i = 0; i <rankingList.size();i++){
+    %>        
+        data.push([{ classific:'<%=rankingList.get(i).getClassific()%>' , p_name:'<%=rankingList.get(i).getItem_name()%>' , totalAmount:<%=rankingList.get(i).getTotalAmount()%>,ranking:<%=rankingList.get(i).getRanking()%>}]);
+    <%
+}%>
 </script>
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -49,69 +57,15 @@
 </head>
 <body>
 	<div>
-		<!-- 랭킹 -->
-		<table id="myTable" class="table table-dark table-hover">
-			<thead>
-				<tr>
-					<td>타입</td>
-					<td>상품명</td>
-					<td>수량</td>
-					<td>랭킹</td>
-				</tr>
-			</thead>
-			<tbody>
-				<%
-					String cls=null;
-					for (int i = 0; i < rankingList.size(); i++) {
-						SaleProduct sp = rankingList.get(i);
-
-						if(i!=0 && sp.getClassific().equals(cls)==false)
-						{
-							%>
-				<tr>
-					<td>임시</td>
-					<td>저장</td>
-					<td>공간</td>
-					<td>입니다</td>
-				</tr>
-
-				<%
-						}
-				%>
-				<tr>
-					<td>
-						<%
-							out.print(sp.getClassific());
-						%>
-					</td>
-					<td>
-						<%
-							out.print(sp.getItem_name());
-
-						%>
-					</td>
-					<td>
-						<%
-						  	out.print(sp.getTotalAmount());
-						%>
-					</td>
-					<td>
-						<%
-							out.print(sp.getRanking());
-						%>
-					</td>
-				</tr>
-				<%
-				     cls=sp.getClassific();
-					}
-				%>
-			</tbody>
-		</table>
+		
 
 		<!-- 		<svg id="myGraph"> -->
 
 		<!-- 		</svg> -->
 	</div>
+	
+	
+	
 	<div class="container mybgwh">
 		<table id="myTable" class="table table-dark table-hover">
 			<thead>
@@ -166,5 +120,51 @@
 			</tbody>
 		</table>
 	</div>
+	<script>
+	function addDiv(){
+        d3.select("body")
+            .append("div")
+                .attr("class","blue box")
+    }  
+    </script>
+
+    <div></div>
+    <div id="secondArea"></div>
+    <div></div>
+            <!-- 처음 박스 색 -->
+    <script type="text/javascript">
+        d3.selectAll("div") // <-- A
+            .attr("class", "red box"); // <-- B
+    </script>
+    
+        <!-- 실제 데이터 삽입 -->
+	<script type="text/javascript">
+
+        function render(data,selectedTag) { // <- B
+            // Enter
+            d3.select(selectedTag).selectAll("div.h-bar") // <- C
+                .data(data) // <- D
+                .enter() // <- E
+                    .append("div") // <- F
+                        .attr("class", "h-bar")
+                    .append("span"); // <- G
+
+         // Update
+         d3.select(selectedTag).selectAll("div.h-bar")
+            .data(data) 
+                .style("width", function (d) { // <- H
+                    console.log(d[0].totalAmount)
+                    return (d[0].totalAmount * 30) + "px";
+                })
+                .select("span") // <- I
+                    .text(function (d) {
+                        return d[0].p_name;
+                    }); 
+    }
+       
+
+	render(data,"#secondArea");
+</script>
+	
 </body>
 </html>
