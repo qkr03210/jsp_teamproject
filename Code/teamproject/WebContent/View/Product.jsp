@@ -43,11 +43,6 @@
             location.href = '../View/Product.jsp?pd_name=' + pd_name.value;
          }
       }
-
-      //    $('document').ready(function() {
-      //       $('#seatsel').on('click', function() { location.href = 'seatsel.jsp';})
-      //       $('#logout').on('click', function() { location.href = 'logout.jsp';})
-      //    })
    </script>
 
 <!-- 카드 숨김/표시 토글 함수-->
